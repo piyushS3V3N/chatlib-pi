@@ -1,0 +1,46 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "question": "How can I help you today?",
+      "type": "question",
+      "next": ["q2", "q3"]
+    },
+    {
+      "id": "q2",
+      "question": "What kind of service are you looking for?",
+      "type": "question",
+      "next": ["q4"]
+    },
+    {
+      "id": "q3",
+      "question": "Are you looking for technical support?",
+      "type": "question",
+      "next": ["q4"]
+    },
+    {
+      "id": "q4",
+      "question": "Thank you for your response. How else can I assist?",
+      "type": "response",
+      "next": []
+    }
+  ],
+  "responses": [
+    {
+      "id": "q1",
+      "response": "I'm a chatbot ready to help you with anything!"
+    },
+    {
+      "id": "q2",
+      "response": "We offer a variety of services including web development, mobile apps, and AI solutions."
+    },
+    {
+      "id": "q3",
+      "response": "Our technical support team is available 24/7 to assist you with any issues."
+    },
+    {
+      "id": "q4",
+      "response": "Thank you! Feel free to ask anything else."
+    }
+  ]
+}
