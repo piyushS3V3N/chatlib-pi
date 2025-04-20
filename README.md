@@ -11,21 +11,18 @@
 - 🤖 Human-like responses powered by semantic similarity matching (Jaccard-based)
 - 💬 Friendly UI/UX with bot and user icons
 - 🔁 Reset button to start new conversations
+- 🧩 Type-safe structure using TypeScript
 - 🎨 Easy to integrate, extend, and theme
 
 ---
 
 ## 📦 Installation
 
-1. Clone or install the package:
-
 ```bash
 npm install pichat-next
 # or
 yarn add pichat-next
 ```
-
-> ⚠️ _Publishing to npm? Replace `pichat-next` with your actual package name._
 
 ---
 
@@ -35,7 +32,6 @@ yarn add pichat-next
 
 ```tsx
 import Chatbot from "pichat-next";
-
 import responsesJson from "../data/responses.json"; // Path to your conversation flow
 
 const customButtons = [
@@ -54,9 +50,9 @@ export default function HomePage() {
 
 ---
 
-### 2. Structure your `responses.json`
+### 2. Define `responses.json` with Strict Typing
 
-Place your conversation flow in `data/responses.json`:
+> ✅ **New in v1.1+**: Strict typing enforces `type` to be `"question"` or `"response"` only. Be sure to use string literals exactly as specified.
 
 ```json
 {
@@ -107,17 +103,15 @@ Place your conversation flow in `data/responses.json`:
 }
 ```
 
+🛑 **Important:** The `type` field must be either `"question"` or `"response"`—not a generic string.
+
 ---
 
 ## ✏️ Customization
 
-You can customize your bot in several ways without touching core logic:
-
 ### 🔘 Custom Buttons
 
-Add custom CTAs (calls-to-action):
-
-```ts
+```tsx
 const customButtons = [
   { label: "Start Support", action: () => openSupportModal() },
   { label: "FAQ", action: () => navigateToFaq() },
@@ -126,41 +120,71 @@ const customButtons = [
 
 ### 🎨 Styling
 
-Use Tailwind to override styles or customize using the `className` props in the wrapper.
-
-### 💬 Responses
-
-Update `responses.json` to add new conversation paths.
+Use Tailwind CSS to style the bot UI. The `Chatbot` component supports wrapper-level `className` customization.
 
 ---
 
-## 🧪 Testing the Flow
+## ⚙️ API Reference
 
-To test locally in development mode:
+### `<Chatbot />` Props
+
+| Prop             | Type                                               | Description                                  |
+| ---------------- | -------------------------------------------------- | -------------------------------------------- |
+| `responsesJson`  | `{ questions: Question[]; responses: Response[] }` | Required. Structured JSON conversation flow. |
+| `customButtons?` | `{ label: string; action: () => void; }[]`         | Optional. Array of custom action buttons.    |
+
+### Type Definitions
+
+```ts
+type QuestionType = "question" | "response";
+
+interface Question {
+  id: string;
+  question: string;
+  type: QuestionType;
+  next: string[];
+}
+
+interface Response {
+  id: string;
+  response: string;
+}
+```
+
+---
+
+## 🧪 Test Locally
 
 ```bash
 npm run dev
 ```
 
-Visit `http://localhost:3000` to interact with the chatbot.
+Open your browser at `http://localhost:3000` to see the bot in action.
 
 ---
 
-## 📚 Advanced
+## 🔍 Advanced Usage
 
-Want to power the bot with smarter NLP or integrate with a backend?
-
-- Modify `/pages/api/chat.ts` for custom NLP logic (currently using Jaccard similarity)
-- Hook into a real LLM or vector DB for smart matching
-- Add analytics or tracking in the `onResponse()` callback
+- Extend NLP in `/pages/api/chat.ts`
+- Swap Jaccard with cosine similarity, TF-IDF, or LLM
+- Add telemetry with `onResponse` callback (coming soon)
 
 ---
 
-## 📤 Publishing Guide (for maintainers)
+## 🧼 Common Errors & Fixes
 
-- Ensure everything is typed and default props are provided
-- Build: `npm run build`
-- Publish to npm: `npm publish --access public`
+| Error                                                                | Fix                                                                                      |
+| -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `Type 'string' is not assignable to type '"question" \| "response"'` | Make sure `type` values in `responses.json` are **exactly** `"question"` or `"response"` |
+| `Type is not assignable to 'Question[]'`                             | Your `questions` array might be missing required fields or using incorrect types         |
+
+---
+
+## 📤 Publishing (for Maintainers)
+
+1. Ensure type safety
+2. `npm run build`
+3. `npm publish --access public`
 
 ---
 
