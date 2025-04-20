@@ -2,10 +2,10 @@
   "name": "pichat-next",
   "version": "0.1.5",
   "private": false,
-  "main": "dist/components/Chatbot.js",  // JavaScript file for your component
-  "types": "dist/components/Chatbot.d.ts",  // TypeScript type definition for the component
+  "main": "dist/components/Chatbot.js",
+  "types": "dist/components/Chatbot.d.ts",
   "exports": {
-    ".": "./dist/components/Chatbot.js"  // Make the component available from the main entry point
+    ".": "./dist/components/Chatbot.js"
   },
   "scripts": {
     "dev": "next dev",
