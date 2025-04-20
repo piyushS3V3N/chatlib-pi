@@ -1,11 +1,11 @@
 {
   "name": "pichat-next",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "private": false,
-  "main": "dist/components/Chatbot.js",
+  "main": "dist/components/Chatbot.jsx",
   "types": "dist/components/Chatbot.d.ts",
   "exports": {
-    ".": "./dist/components/Chatbot.js"
+    ".": "./dist/components/Chatbot.jsx"
   },
   "scripts": {
     "dev": "next dev",

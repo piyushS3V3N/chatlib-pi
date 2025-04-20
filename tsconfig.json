@@ -1,27 +1,25 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": false,
+    "lib": ["dom", "esnext"],
+    "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-    "noEmit": false,
-    "outDir": "dist",
-    "rootDir": "src",
-    "declaration": true,
-    "declarationDir": "dist",
+    "noEmit": false,  // Ensure emitting output files
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react",
+    "outDir": "./dist",  // Ensure output is placed in the dist folder
+    "rootDir": "./src",  // Ensure the src folder is used as the root directory
     "incremental": true,
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "next-env.d.ts"],  // 👈 Clean include
-  "exclude": ["node_modules", "dist"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx"],
+  "exclude": ["node_modules"]
 }
 
