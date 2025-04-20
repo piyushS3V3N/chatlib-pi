@@ -1,6 +1,6 @@
-# 🧠 ChatFlow – Customizable Button-Based Chatbot for Next.js
+# 🧠 Chatlib-pi – Customizable Button-Based Chatbot for Next.js
 
-**ChatFlow** is a plug-and-play chatbot component built with React and Next.js. It's fully customizable through a simple JSON structure—no need to modify core components! With a flow-based system and button-driven interactions, it provides a user-friendly experience, enhanced with icons and intuitive UX design.
+**Chatlib-pi** is a plug-and-play chatbot component built with React and Next.js. It's fully customizable through a simple JSON structure—no need to modify core components! With a flow-based system and button-driven interactions, it provides a user-friendly experience, enhanced with icons and intuitive UX design.
 
 ---
 
@@ -20,12 +20,12 @@
 1. Clone or install the package:
 
 ```bash
-npm install chatflow-bot
+npm install chatlib-pi
 # or
-yarn add chatflow-bot
+yarn add chatlib-pi
 ```
 
-> ⚠️ _Publishing to npm? Replace `chatflow-bot` with your actual package name._
+> ⚠️ _Publishing to npm? Replace `chatlib-pi` with your actual package name._
 
 ---
 
@@ -34,7 +34,7 @@ yarn add chatflow-bot
 ### 1. Add the Component
 
 ```tsx
-import Chatbot from "chatflow-bot";
+import Chatbot from "chatlib-pi";
 
 import responsesJson from "../data/responses.json"; // Path to your conversation flow
 
