@@ -1,6 +1,6 @@
-# 🧠 Chatlib-pi – Customizable Button-Based Chatbot for Next.js
+# 🧠 PiChat-next – Customizable Button-Based Chatbot for Next.js
 
-**Chatlib-pi** is a plug-and-play chatbot component built with React and Next.js. It's fully customizable through a simple JSON structure—no need to modify core components! With a flow-based system and button-driven interactions, it provides a user-friendly experience, enhanced with icons and intuitive UX design.
+**PiChat-next** is a plug-and-play chatbot component built with React and Next.js. It's fully customizable through a simple JSON structure—no need to modify core components! With a flow-based system and button-driven interactions, it provides a user-friendly experience, enhanced with icons and intuitive UX design.
 
 ---
 
@@ -20,12 +20,12 @@
 1. Clone or install the package:
 
 ```bash
-npm install chatlib-pi
+npm install pichat-next
 # or
-yarn add chatlib-pi
+yarn add pichat-next
 ```
 
-> ⚠️ _Publishing to npm? Replace `chatlib-pi` with your actual package name._
+> ⚠️ _Publishing to npm? Replace `pichat-next` with your actual package name._
 
 ---
 
@@ -34,7 +34,7 @@ yarn add chatlib-pi
 ### 1. Add the Component
 
 ```tsx
-import Chatbot from "chatlib-pi";
+import Chatbot from "pichat-next";
 
 import responsesJson from "../data/responses.json"; // Path to your conversation flow
 
