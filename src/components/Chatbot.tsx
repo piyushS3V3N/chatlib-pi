@@ -1,3 +1,4 @@
+// components/Chatbot.tsx
 import { useState } from "react";
 import { User, Bot } from "lucide-react";
 
@@ -35,15 +36,31 @@ const Chatbot: React.FC<ChatbotProps> = ({ responsesJson }) => {
     setMessages((prev) => [...prev, { text, isUser }]);
   };
 
-  const handleUserSelection = (nextId: string) => {
+  const handleUserSelection = async (nextId: string) => {
     const selectedQuestion = questions.find((q) => q.id === nextId);
     if (!selectedQuestion) return;
 
+    addMessage(selectedQuestion.question, true);
+
     const responseObj = responses.find((r) => r.id === selectedQuestion.id);
 
-    addMessage(selectedQuestion.question, true);
     if (responseObj) {
       addMessage(responseObj.response, false);
+    } else {
+      // Use fallback API if no matching response is found
+      try {
+        const res = await fetch("/api/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message: selectedQuestion.question }),
+        });
+        const data = await res.json();
+        addMessage(data.response, false);
+      } catch (error) {
+        addMessage("An error occurred while fetching the response.", false);
+      }
     }
 
     setCurrentQuestionId(selectedQuestion.id);
